@@ -233,12 +233,11 @@ FormPilot/
 
 Built with ☕ and zero sleep at **[Hackathon Name]**
 
-| | Name |
-|-|------|------|
-| 👨‍💻 | **Karan Raj** | 
-| 👨‍💻 | **Saagnik** | 
-| 👨‍💻 | **Havinash** | 
-
+| Name |
+|------|
+| **Karan Raj** |
+| **Saagnik** |
+| **Havinash** |
 ---
 
 ## 📄 License
