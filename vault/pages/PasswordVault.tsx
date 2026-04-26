@@ -1,3 +1,4 @@
+// @ts-nocheck — staging file outside TS project root; real copy lives in src/popup/pages/
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Trash2, Edit2, Copy, Eye, EyeOff, RefreshCw, Search, Key, ChevronDown, ChevronUp, Check } from 'lucide-react';
 import type { PasswordEntry, Page } from '../../shared/types';

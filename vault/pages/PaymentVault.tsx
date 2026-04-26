@@ -1,3 +1,4 @@
+// @ts-nocheck — staging file outside TS project root; real copy lives in src/popup/pages/
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, Edit2, Star, CreditCard, ChevronDown, ChevronUp } from 'lucide-react';
 import type { PaymentCard, Page } from '../../shared/types';

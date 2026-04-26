@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Plus, Edit2, Trash2, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Plus, Edit2, Trash2, CheckCircle2, ChevronDown, ChevronUp, Copy, Check } from 'lucide-react';
 import type { Profile, Settings } from '../../shared/types';
 import { addProfile, updateProfile, deleteProfile, saveSettings, generateId } from '../../shared/storage';
 import { EMPTY_PROFILE_DATA, PROFILE_COLORS, PROFILE_EMOJIS, TONE_OPTIONS, LENGTH_OPTIONS } from '../../shared/constants';
@@ -20,6 +20,15 @@ export default function Profiles({ profiles, setProfiles, activeProfileId, setSe
   const [formData, setFormData] = useState<Partial<Profile>>({});
   
   const scrollView = useRef<HTMLDivElement>(null);
+  const [promptCopied, setPromptCopied] = useState(false);
+
+  const LLM_CONTEXT_PROMPT = `Please compile everything you know about me into a structured personal profile. Include all of the following that you know:\n\n- Full name\n- Email address\n- Phone number\n- Home address (street, city, state, zip, country)\n- Current job title and company\n- Years of experience\n- Key skills (comma-separated)\n- A 2–3 sentence professional bio\n- Work experience highlights (role, company, brief description)\n- Education (degree, institution, year)\n- Notable projects (name + one-line description)\n- LinkedIn URL\n- GitHub URL\n- Personal website\n- Any other relevant personal or professional information\n\nFormat it as clean plain text — no markdown, no headers — so I can paste it directly into a form-filling assistant.`;
+
+  const copyPrompt = async () => {
+    await navigator.clipboard.writeText(LLM_CONTEXT_PROMPT);
+    setPromptCopied(true);
+    setTimeout(() => setPromptCopied(false), 2500);
+  };
 
   const startEdit = (profile: Profile) => {
     setFormData(JSON.parse(JSON.stringify(profile)));
@@ -210,6 +219,25 @@ export default function Profiles({ profiles, setProfiles, activeProfileId, setSe
           
           {expandedSection === 'basic' && (
             <div className="p-3 space-y-3 border-t border-[#27272a]">
+              {/* Prompt helper */}
+              <div className="rounded-lg border border-primary-500/20 bg-primary-500/5 p-2.5 space-y-2">
+                <p className="text-[10px] text-muted-light leading-relaxed">
+                  Don't have your info ready? Copy this prompt and paste it into{' '}
+                  <span className="text-primary-400 font-medium">ChatGPT, Claude, or Gemini</span>
+                  {' '}— then paste the result below.
+                </p>
+                <button
+                  onClick={copyPrompt}
+                  className={`flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1.5 rounded-md transition-all ${
+                    promptCopied
+                      ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                      : 'bg-primary-500/15 text-primary-400 border border-primary-500/25 hover:bg-primary-500/25'
+                  }`}
+                >
+                  {promptCopied ? <Check size={11} /> : <Copy size={11} />}
+                  {promptCopied ? 'Prompt copied!' : 'Copy prompt for any LLM'}
+                </button>
+              </div>
               <div className="space-y-1">
                 <label className="text-xs text-muted-light">Everything about you (Resume, Biography, Custom Instructions, etc)</label>
                 <textarea 

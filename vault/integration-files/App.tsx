@@ -1,3 +1,4 @@
+// @ts-nocheck — staging file outside TS project root; real copy lives in src/popup/
 import React, { useState, useEffect } from 'react';
 import { Settings as SettingsIcon, Clock, UserCircle2, LayoutDashboard, ScanLine, LockKeyhole } from 'lucide-react';
 import type { Page, Profile, Settings, DetectedField } from '../shared/types';
