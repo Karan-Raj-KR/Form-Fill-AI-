@@ -231,7 +231,7 @@ FormPilot/
 
 ## 👥 Team
 
-Built with ☕ and zero sleep at **[Hackathon Name]**
+Built with ☕ and zero sleep at **[Open Loop]**
 
 | Name |
 |------|
