@@ -250,6 +250,6 @@ MIT © 2026 FormPilot Team
 
 **If you've ever rage-quit a form, this is for you.**
 
-⭐ Star this repo if it saved you time
+⭐ Star this repo if it saved you time .
 
 </div>
