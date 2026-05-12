@@ -242,7 +242,7 @@ Built with ☕ and zero sleep at **[Open Loop]**
 
 ## 📄 License
 
-MIT © 2025 FormPilot Team
+MIT © 2026 FormPilot Team
 
 ---
 
